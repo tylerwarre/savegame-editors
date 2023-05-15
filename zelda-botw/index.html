@@ -14,16 +14,6 @@
 	<script type="text/javascript" src="./zelda-botw.locations.js"></script>
 	<script type="text/javascript" src="./zelda-botw.icons.js"></script>
 	<script type="text/javascript" src="./zelda-botw.master.js"></script>
-	<script type="text/javascript"><!--
-		/* service worker */
-		var FORCE_HTTPS=true;
-		window.addEventListener('load',function(){
-			if(location.protocol==='http:' && FORCE_HTTPS)
-				location.replace(window.location.href.replace('http:','https:'));
-			else if(location.protocol==='https:' && 'serviceWorker' in navigator)
-				navigator.serviceWorker.register('/savegame-editors/zelda-botw/_cache_service_worker.js', {scope: '/savegame-editors/zelda-botw/'});
-		}, false);
-	--></script>
 </head>
 <body>
 
@@ -178,11 +168,12 @@
 		<!-- COMPLETIONISM -->
 		<h3 class="border-blue">Completionism</h3>
 		<div class="row">
-			<div class="seven columns"><label for="number-koroks">Korok seeds</label></div>
-			<div class="five columns text-right">
+			<div class="six columns"><label for="number-koroks">Korok seeds</label></div>
+			<div class="six columns text-right">
 				<input type="text" id="number-koroks" style="width:50px" disabled />
 				<button onclick="unlockKoroks()">Get all</button>
-				<button onclick="addKoroksToMap()">Add pins to Map</button>
+				<input type="text" id="number-koroks-add" style="width:50px" value=0 />
+				<button onclick="addKoroksToMap(document.getElementById('number-koroks-add').value)">Add pins to Map</button>
 			</div>
 		</div>
 
